@@ -54,7 +54,8 @@ Nourishment=st.radio(label='Nourishment',
 if st.button("Predict"):
     # Unpickle classifier
     RSF = joblib.load("RSF.pkl")
-    explainer=joblib.load("Explainer.pkl")
+    X_train=joblib.load("X_train.pkl")
+    explainer = shap.Explainer(RSF.predict,X_train)
     # Store inputs into dataframe
     X = pd.DataFrame([[Age,CCI,ISS,Thoracic_abdominal_organs_damage,Cervical_fracture,NLI,Time_injury,
                     Surgery_timing,Transfusion,Critical_care,Nourishment]], 
@@ -104,7 +105,7 @@ if st.button("Predict"):
     #预测死亡时间
     patient = X[X.index==0]
     rg=risk_groups(RSF,patient)
-    shap_values = explainer(patient[0:1])
+    shap_values = explainer(patient)
     shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
