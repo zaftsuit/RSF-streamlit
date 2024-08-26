@@ -180,10 +180,10 @@ if st.button("Predict"):
     rg=risk_groups(RSF,patient)
     shap_values = explainer(patient)
     p1=plt.figure(figsize=(10,25),dpi=300)
-    ax1=p1.add_subplot(1,1,1)
+    ax1=p1.add_subplot(2,1,1)
     shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
   
-    ax2=p1.add_subplot(1,1,2)
+    ax2=p1.add_subplot(2,1,2)
     shap.plots.waterfall(shap_values[0])
     plt.savefig("shap_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
