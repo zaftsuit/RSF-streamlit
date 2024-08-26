@@ -181,11 +181,14 @@ if st.button("Predict"):
     shap_values = explainer(patient)
     shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
+    shap.plots.waterfall(shap_values)
+    plt.savefig("shap_waterfall_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
     st.header('outcome prediction')
     st.text(f"mortality risk:\n{rg}")
     st.text(f"Predicting Outcomes:\n{ST}")
     st.text(f"Risk indicators plot：")
+    st.image("shap_waterfall_plot.png")
     st.image("shap_force_plot.png")
 
 
