@@ -156,7 +156,7 @@ if st.button("Predict"):
                     if fn(time)>1:
                         time_value=time#发生结局的最短时间
                         break
-                Time=('According to our model, the psurvival time of the patient is expected to be {} months'.format(time)) 
+                Time=('According to our model, the psurvival time of the patient\n is expected to be {} months'.format(time)) 
                 return Time
     prediction = RSF.predict(X)[0]
     patient = X[X.index==0]
@@ -183,8 +183,9 @@ if st.button("Predict"):
     plt.savefig("shap_force_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
     st.header('outcome prediction')
-    st.text(f"mortality risk:{rg}")
-    st.text(f"Predicting Outcomes:{ST}")
+    st.text(f"mortality risk:\n{rg}")
+    st.text(f"Predicting Outcomes:\n{ST}")
+    st.text(f"Risk indicators plot：")
     st.image("shap_force_plot.png")
 
 
