@@ -34,7 +34,7 @@ Cervical_fracture=st.radio(label='Cervical fracture',options=['Non-fractures','U
 #6.NLI
 NLI=st.radio(label='NLI',options=['C1-C4','C5-C8'])
 #7 Time of injury
-Time_injury=st.slider(label='Time of injury')
+Time_injury=st.slider(label='Time of injury(d)',min_value=1, max_value=10)
 #8 Surgery timing
 Surgery_timing=st.radio(label='Surgery Timing',
                    options=['Non-surgery','Early','Delay'])
