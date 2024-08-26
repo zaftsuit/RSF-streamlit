@@ -24,20 +24,20 @@ st.title('mortality Risk Prediction for Patients with severe TCSCI')
 #1.Age
 Age= st.number_input(label='Age(y)',min_value=1, max_value=100)
 #2 CCI
-CCI=st.slider(label='Charlson Comorbidity Index',min_value=1, max_value=10)
+CCI=st.slider(label='Charlson Comorbidity Index(CCI)',min_value=1, max_value=10)
 #3.ISS
-ISS=st.slider(label='Injury severity score',min_value=1, max_value=75)
+ISS=st.slider(label='Injury Severity Score(ISS)',min_value=1, max_value=75)
 #4 Thoracic and abdominal organs damage
 Thoracic_abdominal_organs_damage=st.radio(label='Thoracic abdominal organs damage',options=['Non-damage','Single','multiple'])
 #5 Cervical fracture
 Cervical_fracture=st.radio(label='Cervical fracture',options=['Non-fractures','Upper(C1-2)','Lower(C3-7)'])
 #6.NLI
-NLI=st.radio(label='NLI',options=['C1-C4','C5-C8'])
+NLI=st.radio(label='Neurological Level of Impairment(NLI)',options=['C1-C4','C5-C8'])
 #7 Time of injury
 Time_injury=st.slider(label='Time of injury(d)',min_value=1, max_value=10)
 #8 Surgery timing
-Surgery_timing=st.radio(label='Surgery Timing',
-                   options=['Non-surgery','Early','Delay'])
+Surgery_timing=st.radio(label='Surgery Timing(d)',
+                   options=['Non-surgery','Early(＜3d)','Delay(≥3d)'])
 #9.Transfusion
 Transfusion=st.radio(label='Transfusion',options=['No surgery','Surgery with transfusion','Surgery without transfusion'])
 #10.Critical care
@@ -138,7 +138,7 @@ if st.button("Predict"):
     X = X.replace(["Yes", "No"], [1, 0])
     X = X.replace(['Non-damage','Single','multiple'], [0,1,2])
     X = X.replace(['Non-fractures','Upper(C1-2)','Lower(C3-7)'], [0,1,2])
-    X = X.replace(['Non-surgery','Early','Delay'], [0,1,2])
+    X = X.replace(['Non-surgery','Early(＜3d)','Delay(≥3d)'], [0,1,2])
     X = X.replace(['Normal','Enteral','Parenteral'], [0,1,2])
     X = X.replace(['No surgery','Surgery with transfusion','Surgery without transfusion'],[0,1,2])
     #结果
