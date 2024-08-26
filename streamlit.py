@@ -50,7 +50,7 @@ Nourishment=st.radio(label='Nourishment',
 # In[7]:
 
 
-#采集数据
+#collection
 if st.button("Predict"):
     # Unpickle classifier
     RSF = joblib.load("RSF.pkl")
@@ -141,7 +141,7 @@ if st.button("Predict"):
     X = X.replace(['Non-surgery','Early(＜3d)','Delay(≥3d)'], [0,1,2])
     X = X.replace(['Normal','Enteral','Parenteral'], [0,1,2])
     X = X.replace(['No surgery','Surgery with transfusion','Surgery without transfusion'],[0,1,2])
-    #结果
+    #survival time
     def survival_time(model,patient):
         va_times=np.arange(0,60)
         chf_funcs=model.predict_cumulative_hazard_function(patient)
@@ -161,7 +161,7 @@ if st.button("Predict"):
     prediction = RSF.predict(X)[0]
     patient = X[X.index==0]
     ST = survival_time(RSF,patient)
-    
+    #risk-group
     def risk_groups(model,patient):
         y_risk=model.predict(patient)
         group=()
@@ -175,7 +175,7 @@ if st.button("Predict"):
             if fn>=45.5:
                 group=('High-risk group')
                 return group 
-    #预测死亡时间
+    #final
     patient = X[X.index==0]
     rg=risk_groups(RSF,patient)
   
