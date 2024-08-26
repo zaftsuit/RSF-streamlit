@@ -156,7 +156,7 @@ if st.button("Predict"):
                     if fn(time)>1:
                         time_value=time#发生结局的最短时间
                         break
-                Time=('The prognosis survival time of the patients was expected to be {} months'.format(time)) 
+                Time=('According to our model, the psurvival time of the patient is expected to be {} months'.format(time)) 
                 return Time
     prediction = RSF.predict(X)[0]
     patient = X[X.index==0]
