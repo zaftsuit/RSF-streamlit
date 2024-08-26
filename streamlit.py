@@ -22,11 +22,11 @@ st.title('mortality Risk Prediction for Patients with severe TCSCI')
 
 
 #1.Age
-Age= st.number_input(label='Age(y)')
+Age= st.number_input(label='Age(y)',min_value=1, max_value=100)
 #2 CCI
-CCI=st.slider(label='Charlson Comorbidity Index')
+CCI=st.slider(label='Charlson Comorbidity Index', min_value=0，max_value=10)
 #3.ISS
-ISS=st.slider(label='Injury severity score')
+ISS=st.slider(label='Injury severity score',min_value=0，max_value=75)
 #4 Thoracic and abdominal organs damage
 Thoracic_abdominal_organs_damage=st.radio(label='Thoracic abdominal organs damage',options=['Non-damage','Single','multiple'])
 #5 Cervical fracture
