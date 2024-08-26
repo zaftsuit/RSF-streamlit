@@ -54,7 +54,7 @@ Nourishment=st.radio(label='Nourishment',
 if st.button("Predict"):
     # Unpickle classifier
     RSF = joblib.load("RSF.pkl")
-    X_train=pd.read_csv(‘https://github.com/zaftsuit/RSF-streamlit/blob/c548366162e42ee0989a509e2c2e125ddfa57c04/X_train.csv’)
+    X_train=pd.read_csv('https://github.com/zaftsuit/RSF-streamlit/blob/c548366162e42ee0989a509e2c2e125ddfa57c04/X_train.csv')
     explainer = shap.Explainer(RSF.predict,X_train)
     # Store inputs into dataframe
     X = pd.DataFrame([[Age,CCI,ISS,Thoracic_abdominal_organs_damage,Cervical_fracture,NLI,Time_injury,
