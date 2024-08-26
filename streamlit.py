@@ -184,7 +184,7 @@ if st.button("Predict"):
     shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
   
     ax2=p1.add_subplot(2,1,2)
-    shap.plots.waterfall(shap_values[0])
+    shap.plots.waterfall(shap_values[0],matplotlib=True,show=False)
     plt.savefig("shap_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
     st.header('outcome prediction')
