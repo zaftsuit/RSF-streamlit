@@ -178,14 +178,14 @@ if st.button("Predict"):
     #预测死亡时间
     patient = X[X.index==0]
     rg=risk_groups(RSF,patient)
-    shap_values = explainer(patient)
     p1=plt.figure(figsize=(10,25),dpi=300)
     ax1=p1.add_subplot(2,1,1)
-    shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
-  
-    ax2=p1.add_subplot(2,1,2)
-    shap_values1 = explainer(X)
+    shap_values1=explainer(X)
     shap.plots.waterfall(shap_values1[0])
+    
+    ax2=p1.add_subplot(2,1,2)
+    shap_values = explainer(patient)
+    shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
     plt.savefig("shap_plot.png", bbox_inches='tight', dpi=1200)
     # Output prediction
     st.header('outcome prediction')
