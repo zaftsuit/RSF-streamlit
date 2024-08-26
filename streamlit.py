@@ -193,8 +193,8 @@ if st.button("Predict"):
     st.text(f"mortality risk:\n{rg}")
     st.text(f"Predicting Outcomes:\n{ST}")
     st.text(f"Risk indicators plot：\n")
-    st.image("shap_waterfull.png")
-    st.image("shap_plot.png")
+    st.image("shap_waterfall.png")
+    st.image("shap_force.png")
 
 
 # In[ ]:
