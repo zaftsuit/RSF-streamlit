@@ -149,14 +149,14 @@ if st.button("Predict"):
         for fn in chf_funcs:#
             if fn(va_times[-1])<0.5:#在最后的预测时间内死亡全部累计概率不到0.6
                 time_value=999
-                Time=('This patient had no predicted death for 60 months')
+                Time=('According to our model,the survival time of the patient\nis expected to be more then 60 months')
                 return Time
             else:
                 for time in va_times:
                     if fn(time)>1:
                         time_value=time#发生结局的最短时间
                         break
-                Time=('According to our model, the psurvival time of the patient\nis expected to be {} months'.format(time)) 
+                Time=('According to our model, the survival time of the patient\nis expected to be {} months'.format(time)) 
                 return Time
     prediction = RSF.predict(X)[0]
     patient = X[X.index==0]
