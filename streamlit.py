@@ -191,8 +191,7 @@ if st.button("Predict"):
     st.header('outcome prediction')
     st.text(f"mortality risk:\n{rg}")
     st.text(f"Predicting Outcomes:\n{ST}")
-    st.text(f"Risk indicators plot：")
-    st.image("shap_waterfall_plot.png")
+    st.text(f"Risk indicators plot：\n")
     st.image("shap_plot.png")
 
 
