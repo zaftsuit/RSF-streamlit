@@ -178,20 +178,22 @@ if st.button("Predict"):
     #预测死亡时间
     patient = X[X.index==0]
     rg=risk_groups(RSF,patient)
-    p1=plt.figure(figsize=(10,25),dpi=300)
-    ax1=p1.add_subplot(2,1,1)
+  
+    p1=plt.figure()
     shap_values1=explainer(X)
     shap.plots.waterfall(shap_values1[0])
-    
-    ax2=p1.add_subplot(2,1,2)
+    plt.savefig("shap_waterfall.png", bbox_inches='tight', dpi=1200)
+  
+    p2=plt.figure()
     shap_values = explainer(patient)
     shap.plots.force(shap_values,matplotlib=True,show=False,contribution_threshold=0.01)
-    plt.savefig("shap_plot.png", bbox_inches='tight', dpi=1200)
+    plt.savefig("shap_force.png", bbox_inches='tight', dpi=1200)
     # Output prediction
     st.header('outcome prediction')
     st.text(f"mortality risk:\n{rg}")
     st.text(f"Predicting Outcomes:\n{ST}")
     st.text(f"Risk indicators plot：\n")
+    st.image("shap_waterfull.png")
     st.image("shap_plot.png")
 
 
